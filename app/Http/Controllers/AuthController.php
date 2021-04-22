@@ -18,20 +18,18 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt($credentials)) {
+        if (!$this->guard()->attempt($credentials)) {
             return response()->json([
                 'status_code' => 500,
                 'token_type' => 'Unauthorized , The provided credentials are incorrect.'
             ]);
         }
 
-        $token = Auth::user()->createToken('auth-token')->plainTextToken;
-
+        $token = $this->guard()->user()->createToken('auth-token')->plainTextToken;
         return response()->json([
             'status_code' => 200,
             'access_token' => $token,
-            'token_type' => 'Bearer'
-
+            'token_type' => 'Bearer',
         ]);
     }
 
@@ -40,10 +38,15 @@ class AuthController extends Controller
     {
         $user = $request->user();
         $user->tokens()->delete();
-        Auth::guard('web')->logout();
+        $this->guard()->logout();
         return response()->json([
             'status_code' => '200',
             'message' => 'logged out successfully'
         ]);
+    }
+
+    public function guard($guard = 'web')
+    {
+        return Auth::guard($guard);
     }
 }
