@@ -9,7 +9,7 @@
 
             <div v-if="user" class="relative "  ref="dropMenu">
                 <div @click="drop=!drop"  class=" flex items-center cursor-pointer p-4  font-semibold tracking-wider text-lg"> 
-                    Foulen 
+                    {{user.name}} 
                 <ChevronDownIcon class="h-5 w-5 text-gray-700 ml-2 mt-1"></ChevronDownIcon>
 
                 </div>
@@ -46,7 +46,7 @@ import { CogIcon , LogoutIcon , ChevronDownIcon } from '@heroicons/vue/outline';
 
 export default {
     created: function() {
-        if(this.user) {
+        if(this.$store.getters.user) {
             let self = this ;   
             window.addEventListener('click', function(e){
                 if (! self.$refs.dropMenu.contains(e.target) ){

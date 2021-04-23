@@ -79,10 +79,6 @@ export default {
             
         }
     },
-    created(){
-        if(this.$store.getters.user) {
-            this.$router.push({name: 'home'})
-        }
-    }
+    
 }
 </script>

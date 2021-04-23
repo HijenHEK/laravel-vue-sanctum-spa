@@ -45,12 +45,13 @@ export default createStore({
             }
     
         },
-        async logout({commit}) {
-            await axios.post('/api/logout').then((res) => {
-                commit('setUser', null);
-            }).catch((err) => {
-                
-            })
+        async logout({ commit }) {
+                await axios.post('/api/logout').then((res) => {
+                    commit('setUser', null);
+                }).catch((err) => {
+                    
+                })
+            
         },
         async getUser({commit}) {
             await axios.get('/api/user').then((res) => {

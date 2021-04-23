@@ -32218,13 +32218,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 6]]);
       }))();
     }
-  },
-  created: function created() {
-    if (this.$store.getters.user) {
-      this.$router.push({
-        name: 'home'
-      });
-    }
   }
 });
 
@@ -32267,8 +32260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     NavBar: _NavBar_vue__WEBPACK_IMPORTED_MODULE_0__.default
-  },
-  data: function data() {}
+  }
 });
 
 /***/ }),
@@ -32296,7 +32288,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
-    if (this.user) {
+    if (this.$store.getters.user) {
       var self = this;
       window.addEventListener('click', function (e) {
         if (!self.$refs.dropMenu.contains(e.target)) {
@@ -32736,26 +32728,23 @@ var _hoisted_5 = {
   "class": "relative ",
   ref: "dropMenu"
 };
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Foulen ");
-
-var _hoisted_7 = {
+var _hoisted_6 = {
   key: 0,
   "class": "absolute bg-white border z-10 shadow-md flex w-auto flex-col "
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Settings ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Settings ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Logout ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Logout ");
 
-var _hoisted_10 = {
+var _hoisted_9 = {
   key: 1,
   "class": "flex"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Login ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Login ");
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Register ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Register ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
@@ -32780,9 +32769,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.drop = !$data.drop;
     }),
     "class": " flex items-center cursor-pointer p-4  font-semibold tracking-wider text-lg"
-  }, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ChevronDownIcon, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.user.name) + " ", 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ChevronDownIcon, {
     "class": "h-5 w-5 text-gray-700 ml-2 mt-1"
-  })]), $data.drop ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), $data.drop ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "p-4 flex items-center",
     to: {
       name: 'login'
@@ -32791,7 +32782,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CogIcon, {
         "class": "h-6 w-6 text-gray-700 mr-2"
-      }), _hoisted_8];
+      }), _hoisted_7];
     }),
     _: 1
     /* STABLE */
@@ -32803,9 +32794,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "p-4 flex  items-center cursor-pointer"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LogoutIcon, {
     "class": "h-6 w-6 text-gray-700 mr-2"
-  }), _hoisted_9])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512
+  }), _hoisted_8])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512
   /* NEED_PATCH */
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "p-4 tracking-widest flex items-center  text-gray-600",
     "active-class": "font-semibold text-gray-800",
     to: {
@@ -32813,7 +32804,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_11];
+      return [_hoisted_10];
     }),
     _: 1
     /* STABLE */
@@ -32826,7 +32817,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_12];
+      return [_hoisted_11];
     }),
     _: 1
     /* STABLE */
@@ -32914,9 +32905,15 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
   routes: _routes_js__WEBPACK_IMPORTED_MODULE_0__.default
 });
 router.beforeEach(function (to, from, next) {
-  if (to.name !== 'login' && !_store__WEBPACK_IMPORTED_MODULE_1__.default.getters.user) next({
-    name: 'login'
-  });else next();
+  if (_store__WEBPACK_IMPORTED_MODULE_1__.default.getters.user) {
+    if (to.name === 'login' || to.name === 'register') next({
+      name: 'home'
+    });else next();
+  } else {
+    if (to.name !== 'login' && to.name !== 'register') next({
+      name: 'login'
+    });else next();
+  }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 

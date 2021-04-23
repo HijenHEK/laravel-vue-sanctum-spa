@@ -8,8 +8,14 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'login' && !store.getters.user) next({ name: 'login' })
-  else next()
+  if (store.getters.user) {
+    if (to.name === 'login' || to.name === 'register') next({ name: 'home' })
+    else next()
+  } else {
+
+    if (to.name !== 'login' && to.name !== 'register') next({ name: 'login' })
+    else next()
+  }
 })
 
 export default router;
