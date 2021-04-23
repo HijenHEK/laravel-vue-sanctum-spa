@@ -46,12 +46,15 @@ import { CogIcon , LogoutIcon , ChevronDownIcon } from '@heroicons/vue/outline'
 
 export default {
     created: function() {
-        let self = this ;   
-        window.addEventListener('click', function(e){
-            if (! self.$refs.dropMenu.contains(e.target) ){
-                self.drop = false
-            } 
-        })
+        if(this.auth) {
+
+            let self = this ;   
+            window.addEventListener('click', function(e){
+                if (! self.$refs.dropMenu.contains(e.target) ){
+                    self.drop = false
+                } 
+            })
+        }
     },
 
     components: { CogIcon , LogoutIcon , ChevronDownIcon } ,

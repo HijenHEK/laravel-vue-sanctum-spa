@@ -8,15 +8,18 @@
 
                 <div class="p-4">
                     
+                    <!-- <div v-if="error" class="md:w-10/12 md:p-4 w-full mx-auto text-sm bg-red-300 text-white text-center">
+                        {{error}}
+                    </div> -->
 
-                    <form class="md:w-10/12 md:p-4 w-full mx-auto">
+                    <form class="md:w-10/12 md:p-4 w-full mx-auto" @submit.prevent="login">
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
                             <label for="Email" class="w-4/12 "> Email </label>
-                            <input type="text" name="email" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm">
+                            <input type="text" v-model="email" name="email" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm">
                         </div>
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
                             <label for="Password" class="w-4/12 "> Password </label>
-                            <input type="password" name="password" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm ">
+                            <input type="password" v-model="password" name="password" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm ">
                         </div>
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             
@@ -41,3 +44,26 @@
 </div>
 
 </template>
+
+
+<script>
+export default {
+    data() {
+        return {
+            email : '' , 
+            password : '' , 
+            error : ''
+        }
+    },
+    
+    methods : {
+        login(){
+            axios.post('/api/login' , {'email' : this.email , 'password' : this.password})
+                .then(res => console.log(res.data))
+                .catch((err) => {
+                    this.error = err.message
+                })
+        }
+    }
+}
+</script>

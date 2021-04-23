@@ -21,7 +21,7 @@ class AuthController extends Controller
         if (!$this->guard()->attempt($credentials)) {
             return response()->json([
                 'status_code' => 500,
-                'token_type' => 'Unauthorized , The provided credentials are incorrect.'
+                'message' => 'Unauthorized , The provided credentials are incorrect.'
             ]);
         }
 
