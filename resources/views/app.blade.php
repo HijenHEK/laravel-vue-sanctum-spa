@@ -6,7 +6,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <title>Laravel</title>
     </head>
-    <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
+    <body class="bg-gray-50 h-screen antialiased leading-none font-sans">
 
         <div id="app"></div>
 
