@@ -15,7 +15,7 @@
                 </div>
 
                 <div v-if="drop" class="absolute bg-white border z-10 shadow-md flex w-auto flex-col ">
-                    <router-link class="p-4 flex items-center" :to="{ name: 'login' }">
+                    <router-link class="p-4 flex items-center" :to="{ name: 'settings' }">
                         <CogIcon class="h-6 w-6 text-gray-700 mr-2"></CogIcon>
                         Settings
                     </router-link>
@@ -29,12 +29,16 @@
             </div>
 
             <div v-else class="flex">
-                <router-link class="p-4 tracking-widest flex items-center  text-gray-600" active-class="font-semibold text-gray-800" :to="{ name: 'login' }">
+                <router-link class="p-4 tracking-widest flex items-center  text-gray-600" 
+                    active-class="font-semibold text-gray-800" 
+                    :to="{ name: 'login' }">
                         Login
-                    </router-link>
-                <router-link class="p-4 tracking-widest flex items-center  text-gray-600" active-class="font-semibold text-gray-800" :to="{ name: 'register' }">
+                </router-link>
+                <router-link class="p-4 tracking-widest flex items-center  text-gray-600" 
+                    active-class="font-semibold text-gray-800" 
+                    :to="{ name: 'register' }">
                         Register
-                    </router-link>
+                </router-link>
 
                     
             </div>
