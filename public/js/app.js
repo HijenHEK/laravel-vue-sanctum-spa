@@ -24826,8 +24826,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "max-w-screen-md mx-auto text-gray-900"
+};
+var _hoisted_2 = {
+  "class": "flex justify-center"
+};
+var _hoisted_3 = {
+  "class": "flex-1"
+};
+var _hoisted_4 = {
+  "class": "border w-auto"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "shadow-sm  p-4 "
+}, "Log In", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "p-4"
+};
+var _hoisted_7 = {
+  "class": "md:w-9/12 md:p-4 w-full mx-auto"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between\"><label for=\"Email\" class=\"w-3/12 \"> Email </label><input type=\"text\" name=\"email\" class=\"border border-gray-300 bg-white sm:w-9/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none \"></div><div class=\" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between\"><label for=\"Password\" class=\"w-3/12 \"> Password </label><input type=\"password\" name=\"password\" class=\"border border-gray-300 bg-white sm:w-9/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none \"></div><div class=\" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end\"><div class=\"sm:w-9/12 w-full mt-3 sm:mt-0\"><input type=\"checkbox\" name=\"Remeber Me\" class=\"mr-2\" id=\"\"><label for=\"Remember me\">Remeber Me ?</label></div></div>", 3);
+
+var _hoisted_11 = {
+  "class": " w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end"
+};
+var _hoisted_12 = {
+  "class": "sm:w-9/12 w-full  flex justify-between items-center mt-3 sm:mt-0"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  type: "submit",
+  "class": "p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"
+}, "Log In", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New member ? Sing Up ! ");
+
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, "Login");
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'login'
+    },
+    "class": "text-sm text-blue-500 hover:underline"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_14];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])])])])])])]);
 }
 
 /***/ }),
@@ -24925,7 +24983,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [this.$router.name !== 'welcome' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_nav_bar, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [this.$route.name !== 'welcome' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_nav_bar, {
     key: 0
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
     "class": "p-6 "

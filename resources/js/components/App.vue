@@ -1,7 +1,7 @@
 <template>
   <div>
         <div>
-            <nav-bar v-if="this.$router.name !== 'welcome'"></nav-bar>
+            <nav-bar v-if="this.$route.name !== 'welcome'"></nav-bar>
         </div>
         <div>
             <router-view class="p-6 "></router-view>
