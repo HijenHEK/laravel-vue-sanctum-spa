@@ -9,26 +9,26 @@
                 <div class="p-4">
                     
 
-                    <form class="md:w-9/12 md:p-4 w-full mx-auto">
+                    <form class="md:w-10/12 md:p-4 w-full mx-auto">
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
-                            <label for="Email" class="w-3/12 "> Email </label>
-                            <input type="text" name="email" class="border border-gray-300 bg-white sm:w-9/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none ">
+                            <label for="Email" class="w-4/12 "> Email </label>
+                            <input type="text" name="email" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm">
                         </div>
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
-                            <label for="Password" class="w-3/12 "> Password </label>
-                            <input type="password" name="password" class="border border-gray-300 bg-white sm:w-9/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none ">
+                            <label for="Password" class="w-4/12 "> Password </label>
+                            <input type="password" name="password" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm ">
                         </div>
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             
-                            <div class="sm:w-9/12 w-full mt-3 sm:mt-0">
+                            <div class="sm:w-8/12 w-full mt-3 sm:mt-0">
                                 <input type="checkbox" name="Remeber Me" class="mr-2" id="">
                                 <label for="Remember me" >Remeber Me ?</label>
                             </div>
                         </div>
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
-                            <div class="sm:w-9/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
+                            <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
                                 <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Log In</button>
-                                <router-link :to="{name : 'login'}" class="text-sm text-blue-500 hover:underline"> New member ? Sing Up ! </router-link>
+                                <router-link :to="{name : 'register'}" class="text-sm text-blue-500 hover:underline"> New member ? Sing Up ! </router-link>
                             </div>
                         </div>
                     </form>

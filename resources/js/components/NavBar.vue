@@ -2,12 +2,14 @@
     <div class="shadow-md bg-white ">
         <div class="max-w-screen-lg mx-auto flex justify-between">
             <div class=" font-semibold tracking-wider	text-lg  p-4 ">
-                Laravel Vue
+                <router-link to="/home">
+                        Laravel Vue
+                </router-link> 
             </div>
 
-            <div class="relative "  ref="dropMenu">
+            <div v-if="auth" class="relative "  ref="dropMenu">
                 <div @click="drop=!drop"  class=" flex items-center cursor-pointer p-4  font-semibold tracking-wider text-lg"> 
-                Foulen 
+                    Foulen 
                 <ChevronDownIcon class="h-5 w-5 text-gray-700 ml-2 mt-1"></ChevronDownIcon>
 
                 </div>
@@ -23,6 +25,17 @@
                         Logout
                     </div>
                 </div>
+            </div>
+
+            <div v-else class="flex">
+                <router-link class="p-4 tracking-widest flex items-center  text-gray-600" active-class="font-semibold text-gray-800" :to="{ name: 'login' }">
+                        Login
+                    </router-link>
+                <router-link class="p-4 tracking-widest flex items-center  text-gray-600" active-class="font-semibold text-gray-800" :to="{ name: 'register' }">
+                        Register
+                    </router-link>
+
+                    
             </div>
         </div>
     </div>
@@ -44,7 +57,8 @@ export default {
     components: { CogIcon , LogoutIcon , ChevronDownIcon } ,
     data() {
         return {
-            drop : false
+            drop : false ,
+            auth : false
         }
     }
 }
