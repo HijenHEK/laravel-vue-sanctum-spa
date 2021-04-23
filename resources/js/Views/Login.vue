@@ -8,9 +8,16 @@
 
                 <div class="p-4">
                     
-                    <div v-if="error" class="md:w-10/12 md:p-4 w-full mx-auto text-sm bg-red-300 text-white text-center">
-                        {{error}}
+                    <div v-if="error" class="flex items-center bg-red-100 border border-red-400 text-red-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
+                            <!-- <strong class="font-bold">Holy smokes!</strong> -->
+                            <span class="block sm:inline w-full text-center">{{error}}</span>
+                            <span @click="error=null" class="">
+                                    <XIcon class="h-4 w-4 font-bold"></XIcon>
+                            </span>
                     </div>
+                    <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
+                        {{error}}
+                    </div> -->
 
                     <form class="md:w-10/12 md:p-4 w-full mx-auto" @submit.prevent="login">
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
@@ -47,7 +54,11 @@
 
 
 <script>
+import { XIcon } from '@heroicons/vue/solid';
 export default {
+    components : {
+        XIcon
+    },
     data() {
         return {
             email : '' , 
@@ -66,6 +77,11 @@ export default {
                 this.error = e.data.message
             };
             
+        }
+    },
+    created(){
+        if(this.$store.getters.user) {
+            this.$router.push({name: 'home'})
         }
     }
 }
