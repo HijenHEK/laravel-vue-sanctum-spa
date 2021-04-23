@@ -17,9 +17,8 @@ class ProfileController extends Controller
         $user->update($request->only('name', 'email'));
 
         return response()->json([
-            'status_code' => 204,
             'user' => $user,
             'message' => 'profile updated successfully .'
-        ]);
+        ], 200);
     }
 }

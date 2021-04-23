@@ -16,8 +16,7 @@ class PasswordController extends Controller
         ]);
         $user->update(['password' => Hash::make($request->password)]);
         return response()->json([
-            'status_code' => 204,
             'message' => 'password updated successfully .'
-        ]);
+        ], 200);
     }
 }

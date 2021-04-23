@@ -59,7 +59,22 @@ export default createStore({
             }).catch((err) => {
                 
             })
+        },
+        async profile({commit},payload) {
+            await axios.patch('/api/profile', payload).then((res) => {
+                commit('setUser', res.data.user);
+            }).catch((err) => {
+                throw err.response
+            })
+        },
+        async password({commit},payload) {
+            await axios.patch('/api/password', payload).then((res) => {
+                
+            }).catch((err) => {
+                throw err.response
+            })
         }
+
     }
 
 
