@@ -7,7 +7,7 @@
                 </router-link> 
             </div>
 
-            <div v-if="auth" class="relative "  ref="dropMenu">
+            <div v-if="user" class="relative "  ref="dropMenu">
                 <div @click="drop=!drop"  class=" flex items-center cursor-pointer p-4  font-semibold tracking-wider text-lg"> 
                     Foulen 
                 <ChevronDownIcon class="h-5 w-5 text-gray-700 ml-2 mt-1"></ChevronDownIcon>
@@ -19,7 +19,8 @@
                         <CogIcon class="h-6 w-6 text-gray-700 mr-2"></CogIcon>
                         Settings
                     </router-link>
-                    <div class="p-4 flex  items-center cursor-pointer">
+                    
+                    <div @click="logout" class="p-4 flex  items-center cursor-pointer">
                         <LogoutIcon class="h-6 w-6 text-gray-700 mr-2"></LogoutIcon>
 
                         Logout
@@ -41,13 +42,11 @@
     </div>
 </template>
 <script>
-import { CogIcon , LogoutIcon , ChevronDownIcon } from '@heroicons/vue/outline'
-
+import { CogIcon , LogoutIcon , ChevronDownIcon } from '@heroicons/vue/outline';
 
 export default {
     created: function() {
-        if(this.auth) {
-
+        if(this.user) {
             let self = this ;   
             window.addEventListener('click', function(e){
                 if (! self.$refs.dropMenu.contains(e.target) ){
@@ -61,7 +60,17 @@ export default {
     data() {
         return {
             drop : false ,
-            auth : false
+        }
+    },
+    computed : {
+        user() {
+            return this.$store.getters.user ;
+        }
+    },
+    methods : {
+        async logout() {
+            await this.$store.dispatch('logout');
+            this.$router.push({name : 'login'});
         }
     }
 }

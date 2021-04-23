@@ -8,9 +8,9 @@
 
                 <div class="p-4">
                     
-                    <!-- <div v-if="error" class="md:w-10/12 md:p-4 w-full mx-auto text-sm bg-red-300 text-white text-center">
+                    <div v-if="error" class="md:w-10/12 md:p-4 w-full mx-auto text-sm bg-red-300 text-white text-center">
                         {{error}}
-                    </div> -->
+                    </div>
 
                     <form class="md:w-10/12 md:p-4 w-full mx-auto" @submit.prevent="login">
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
@@ -36,7 +36,7 @@
                         </div>
                     </form>
 
-
+                    
                 </div>
             </div>
         </div>
@@ -57,12 +57,15 @@ export default {
     },
     
     methods : {
-        login(){
-            axios.post('/api/login' , {'email' : this.email , 'password' : this.password})
-                .then(res => console.log(res.data))
-                .catch((err) => {
-                    this.error = err.message
-                })
+        async login(){
+            try {
+                await this.$store.dispatch('login' , {'email' : this.email , 'password' : this.password})
+                this.$router.push({name: 'home'})
+            }
+            catch (e){
+                this.error = e.data.message
+            };
+            
         }
     }
 }
