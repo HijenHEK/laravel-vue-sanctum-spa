@@ -45,6 +45,19 @@ export default createStore({
             }
     
         },
+
+        async register({ dispatch }, payload) {
+            try {
+
+                await axios.post('/api/register' , payload).then((res) => {
+                    return dispatch('login' , { 'email' : payload.email , 'password' : payload.password})
+                }).catch((err) => {
+                    throw(err.response)
+                })
+            } catch (e) {
+                throw (e)
+            }
+        },
         async logout({ commit }) {
                 await axios.post('/api/logout').then((res) => {
                     commit('setUser', null);
