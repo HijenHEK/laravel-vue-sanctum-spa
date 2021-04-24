@@ -1,10 +1,10 @@
-import Home from '../Views/Home.vue';
-import Login from '../Views/Login.vue';
-import Password from '../Views/Password.vue';
-import Profile from '../Views/Profile.vue';
-import Register from '../Views/Register.vue';
-import Settings from '../Views/Settings.vue';
-import Welcome from '../Views/Welcome.vue';
+const Settings = () => import('../Views/Settings.vue');
+const Profile = () => import('../Views/Profile.vue');
+const Password = () => import('../Views/Password.vue');
+const Login = () => import('../Views/Login.vue');
+const Register = () => import('../Views/Register.vue');
+const Home = () => import('../Views/Home.vue');
+const Welcome = () => import('../Views/Welcome.vue')
 
 export default [
     { path: '/', component: Welcome , name : 'welcome' },

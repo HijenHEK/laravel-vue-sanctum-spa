@@ -1,9 +1,8 @@
-#Laravel Vue Sanctum SPA
+# Laravel Vue Sanctum SPA
 
 Laravel and vue spa using tailwind (laravel/ui looks) for styling and sanctum for authentification
 
 ![image](https://drive.google.com/uc?export=view&id=18dL18Tk6UilQPQAcHuMsSOqJOESpd6YJ)
-
 
 ## Features
 
@@ -39,4 +38,8 @@ npm run production
 
 ##
 
-Highly inspired by [laravel-vue-spa by cretueusebiu](https://github.com/cretueusebiu/laravel-vue-spa) where it uses bootstrap 4 fontawesome and for JWT authentification
+Highly inspired by [laravel-vue-spa by cretueusebiu](https://github.com/cretueusebiu/laravel-vue-spa) where it uses bootstrap 4 fontawesome and JWT for authentification
+
+##
+
+> Other features are under development coming soon :fire:

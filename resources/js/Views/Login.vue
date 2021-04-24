@@ -4,9 +4,9 @@
     <div class="flex justify-center">
         <div class="flex-1">
             <div class="border w-auto">
-                <div  class="shadow-sm  p-4 ">Log In</div>
+                <div  class="border p-4  font-semibold">Log In</div>
 
-                <div class="p-4">
+                <div class="p-4 bg-white">
                     
                     <div v-if="error" class="flex items-center bg-red-100 border border-red-400 text-red-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
                             <!-- <strong class="font-bold">Holy smokes!</strong> -->

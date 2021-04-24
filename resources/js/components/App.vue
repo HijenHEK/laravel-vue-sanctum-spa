@@ -4,7 +4,12 @@
             <nav-bar v-if="this.$route.name !== 'welcome'"></nav-bar>
         </div>
         <div>
-            <router-view class="p-6 "></router-view>
+          
+          <router-view class="p-6 " v-slot="{ Component }">
+            <transition name="fade" mode="out-in" >
+              <component :is="Component" />
+            </transition>
+          </router-view>
         </div>
   </div>
 </template>
@@ -18,3 +23,17 @@ export default {
   
 }
 </script>
+
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+</style>

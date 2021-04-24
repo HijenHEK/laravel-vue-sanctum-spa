@@ -3,9 +3,9 @@
     <div class="flex justify-center">
         <div class="flex-1">
             <div class="border w-auto">
-                <div  class="shadow-sm  p-4 ">Dashboard</div>
+                <div  class="border p-4 font-semibold ">Dashboard</div>
 
-                <div class="p-4">
+                <div class="p-4 bg-white">
                     
 
                     You are Home !
