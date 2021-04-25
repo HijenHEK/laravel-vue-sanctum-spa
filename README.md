@@ -10,6 +10,7 @@ Laravel and vue spa using tailwind (laravel/ui looks) for styling and sanctum fo
 -   Laravel 8
 -   Vue + VueRouter + Vuex
 -   Login, register, update profile
+-   password reset
 -   Authentication with Sanctum
 -   Tailwind + Heroicons
 
