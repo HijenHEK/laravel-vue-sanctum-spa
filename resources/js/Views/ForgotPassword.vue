@@ -7,7 +7,7 @@
                 <div  class="border p-4  font-semibold">Forgot your Password ?</div>
 
                 <div class="p-4 bg-white">
-                    <div v-if="success" class="flex items-center bg-green-100 border border-green-400 text-green-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
+                    <div v-if="success" class="flex items-center bg-green-50 border border-green-400 text-green-500 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
                             <!-- <strong class="font-bold">Holy smokes!</strong> -->
                             <span class="block sm:inline w-full text-center">{{success}}</span>
                             <span @click="success=null" class="">
@@ -68,10 +68,10 @@ export default {
         send(){
             axios.post('/api/forgot-password' , {'email': this.email}) 
                 .then((res) =>{
-                    console.log(res)
+                    this.success = res.data.msg
                 })
                 .catch((err) =>{
-                    this.error = err.message
+                    this.error = err.response.data.message
                 })
             
         }

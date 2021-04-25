@@ -7460,9 +7460,9 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/forgot-password', {
         'email': this.email
       }).then(function (res) {
-        console.log(res);
+        _this.success = res.data.msg;
       })["catch"](function (err) {
-        _this.error = err.message;
+        _this.error = err.response.data.message;
       });
     }
   }
@@ -7507,7 +7507,7 @@ var _hoisted_6 = {
 };
 var _hoisted_7 = {
   key: 0,
-  "class": "flex items-center bg-green-100 border border-green-400 text-green-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto",
+  "class": "flex items-center bg-green-50 border border-green-400 text-green-500 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto",
   role: "alert"
 };
 var _hoisted_8 = {
