@@ -7,20 +7,9 @@
     <div class="p-4 bg-white">
 
 
-                    <div v-if="error" class="flex items-center bg-red-100 border border-red-400 text-red-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
-                            <!-- <strong class="font-bold">Holy smokes!</strong> -->
-                            <span class="block sm:inline w-full text-center">{{error}}</span>
-                            <span @click="error=null" class="">
-                                    <XIcon class="h-4 w-4 font-bold"></XIcon>
-                            </span>
-                    </div>
-                     <div v-if="success" class="flex items-center bg-green-100 border border-green-400 text-green-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
-                            <!-- <strong class="font-bold">Holy smokes!</strong> -->
-                            <span class="block sm:inline w-full text-center">{{success}}</span>
-                            <span @click="success=null" class="">
-                                    <XIcon class="h-4 w-4 font-bold"></XIcon>
-                            </span>
-                    </div>
+                    <alert type="success" v-if="success" :content="success" @close="success=null" />
+
+                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
                     <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
                         {{error}}
                     </div> -->
@@ -49,9 +38,11 @@
 
 <script>
 import { XIcon } from '@heroicons/vue/solid';
+import Alert from '../components/Alert.vue';
 export default {
     components : {
-        XIcon
+        XIcon,
+        Alert
     },
     data() {
         return {
