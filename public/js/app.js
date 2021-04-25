@@ -25053,23 +25053,29 @@ __webpack_require__.r(__webpack_exports__);
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createWebHistory)(),
   routes: _routes_js__WEBPACK_IMPORTED_MODULE_0__.default
-}); // router.beforeEach((to, from, next) => {
-//   if (store.getters.user) {
-//     if (to.matched.some(route => !route.meta.authRequired)) next({ name: 'home' })
-//     else next();
-//   } else {
-//     if (to.matched.some(route => route.meta.authRequired)) next({ name: 'login' })
-//     else next();
-//   }
-//   // if (store.getters.user) {
-//   //   if (to.name === 'login' || to.name === 'register') next({ name: 'home' })
-//   //   else next()
-//   // } else {
-//   //   if (to.name !== 'login' && to.name !== 'register') next({ name: 'login' })
-//   //   else next()
-//   // }
-// })
+});
+router.beforeEach(function (to, from, next) {
+  if (_store__WEBPACK_IMPORTED_MODULE_1__.default.getters.user) {
+    if (to.matched.some(function (route) {
+      return !route.meta.authRequired;
+    })) next({
+      name: 'home'
+    });else next();
+  } else {
+    if (to.matched.some(function (route) {
+      return route.meta.authRequired;
+    })) next({
+      name: 'login'
+    });else next();
+  } // if (store.getters.user) {
+  //   if (to.name === 'login' || to.name === 'register') next({ name: 'home' })
+  //   else next()
+  // } else {
+  //   if (to.name !== 'login' && to.name !== 'register') next({ name: 'login' })
+  //   else next()
+  // }
 
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),

@@ -7,7 +7,14 @@
                 <div  class="border  p-4 font-semibold ">Reset your password</div>
 
                 <div class="p-4 bg-white">
-                    
+                    <div v-if="success" class="flex items-center bg-green-50 border border-green-400 text-green-500 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
+                            <!-- <strong class="font-bold">Holy smokes!</strong> -->
+                            <span class="block sm:inline w-full text-center">{{success}}</span>
+                            <span @click="success=null" class="">
+                                    <XIcon class="h-4 w-4 font-bold"></XIcon>
+                            </span>
+                    </div>
+
                     <div v-if="error" class="flex items-center bg-red-100 border border-red-400 text-red-600 px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto" role="alert">
                             <!-- <strong class="font-bold">Holy smokes!</strong> -->
                             <span class="block sm:inline w-full text-center">{{error}}</span>
@@ -67,7 +74,9 @@ export default {
 
             password : '' ,
             password_confirmation : '',
-            error : ''
+            error : '',
+            success : '',
+            
         }
     },
 
@@ -80,7 +89,11 @@ export default {
                     'password_confirmation': this.password_confirmation 
                 }) 
                 .then((res) =>{
-                    console.log(res.data.msg)
+                    this.success = res.data.msg + ' redirecting ...'
+                    setTimeout(()=>{
+
+                        this.$router.push({name:'login'})
+                    },1000)
                 })
                 .catch((err) =>{
                     this.error = err.response.data.message

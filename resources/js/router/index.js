@@ -7,26 +7,26 @@ const router = createRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (store.getters.user) {
+router.beforeEach((to, from, next) => {
+  if (store.getters.user) {
     
-//     if (to.matched.some(route => !route.meta.authRequired)) next({ name: 'home' })
-//     else next();
+    if (to.matched.some(route => !route.meta.authRequired)) next({ name: 'home' })
+    else next();
     
-//   } else {
-//     if (to.matched.some(route => route.meta.authRequired)) next({ name: 'login' })
-//     else next();
-//   }
+  } else {
+    if (to.matched.some(route => route.meta.authRequired)) next({ name: 'login' })
+    else next();
+  }
   
-//   // if (store.getters.user) {
-//   //   if (to.name === 'login' || to.name === 'register') next({ name: 'home' })
-//   //   else next()
-//   // } else {
+  // if (store.getters.user) {
+  //   if (to.name === 'login' || to.name === 'register') next({ name: 'home' })
+  //   else next()
+  // } else {
 
-//   //   if (to.name !== 'login' && to.name !== 'register') next({ name: 'login' })
-//   //   else next()
-//   // }
-// })
+  //   if (to.name !== 'login' && to.name !== 'register') next({ name: 'login' })
+  //   else next()
+  // }
+})
 
 export default router;
 
