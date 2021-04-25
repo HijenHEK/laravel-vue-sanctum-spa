@@ -7,9 +7,15 @@
                 <div class="flex flex-col  bg-white">
                     
 
-                    <router-link :to="{name : 'profile'}" class="p-4" active-class="text-white bg-blue-500"> Profile </router-link>
+                    <router-link :to="{name : 'profile'}" class="p-4 flex items-center" active-class="text-white bg-blue-500"> 
+                        <UserIcon class="h-5 w-5 mr-3"  />
+                        Profile 
+                    </router-link>
 
-                    <router-link :to="{name : 'password'}" class="p-4" active-class="text-white bg-blue-500"> Password </router-link>
+                    <router-link :to="{name : 'password'}" class="p-4 flex items-center" active-class="text-white bg-blue-500"> 
+                        <KeyIcon class="h-5 w-5 mr-3"  />
+                        Password 
+                    </router-link>
 
 
                 </div>
@@ -25,6 +31,16 @@
         
   </div>
 </template>
+
+
+<script>
+import {UserIcon , KeyIcon} from '@heroicons/vue/outline'
+export default {
+    components : {
+        UserIcon , KeyIcon
+    }
+}
+</script>
 
 
 

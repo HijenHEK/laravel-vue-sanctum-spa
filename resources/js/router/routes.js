@@ -12,9 +12,7 @@ export default [{
         path: '/',
         component: Welcome,
         name: 'welcome',
-        meta: {
-            authRequired: true
-        }
+
     },
     {
         path: '/home',

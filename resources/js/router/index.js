@@ -8,14 +8,18 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (store.getters.user) {
+  if (to.name === 'welcome') next()
+  else {
+
+    if (store.getters.user) {
+      if (to.matched.some(route => !route.meta.authRequired)) next({ name: 'home' })
+      else next();
+      
+    } else {
+      if (to.matched.some(route => route.meta.authRequired)) next({ name: 'login' })
+      else next();
+    }
     
-    if (to.matched.some(route => !route.meta.authRequired)) next({ name: 'home' })
-    else next();
-    
-  } else {
-    if (to.matched.some(route => route.meta.authRequired)) next({ name: 'login' })
-    else next();
   }
   
   // if (store.getters.user) {
