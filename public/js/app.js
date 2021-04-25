@@ -25176,11 +25176,17 @@ var Welcome = function Welcome() {
   children: [{
     path: 'profile',
     component: Profile,
-    name: 'profile'
+    name: 'profile',
+    meta: {
+      authRequired: true
+    }
   }, {
     path: 'password',
     component: Password,
-    name: 'password'
+    name: 'password',
+    meta: {
+      authRequired: true
+    }
   }]
 }, {
   path: '/:pathMatch(.*)*',
