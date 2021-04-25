@@ -25053,18 +25053,23 @@ __webpack_require__.r(__webpack_exports__);
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createWebHistory)(),
   routes: _routes_js__WEBPACK_IMPORTED_MODULE_0__.default
-});
-router.beforeEach(function (to, from, next) {
-  if (_store__WEBPACK_IMPORTED_MODULE_1__.default.getters.user) {
-    if (to.name === 'login' || to.name === 'register') next({
-      name: 'home'
-    });else next();
-  } else {
-    if (to.name !== 'login' && to.name !== 'register') next({
-      name: 'login'
-    });else next();
-  }
-});
+}); // router.beforeEach((to, from, next) => {
+//   if (store.getters.user) {
+//     if (to.matched.some(route => !route.meta.authRequired)) next({ name: 'home' })
+//     else next();
+//   } else {
+//     if (to.matched.some(route => route.meta.authRequired)) next({ name: 'login' })
+//     else next();
+//   }
+//   // if (store.getters.user) {
+//   //   if (to.name === 'login' || to.name === 'register') next({ name: 'home' })
+//   //   else next()
+//   // } else {
+//   //   if (to.name !== 'login' && to.name !== 'register') next({ name: 'login' })
+//   //   else next()
+//   // }
+// })
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
@@ -25096,6 +25101,10 @@ var Login = function Login() {
   return __webpack_require__.e(/*! import() */ "resources_js_Views_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Views/Login.vue */ "./resources/js/Views/Login.vue"));
 };
 
+var ForgotPassword = function ForgotPassword() {
+  return __webpack_require__.e(/*! import() */ "resources_js_Views_ForgotPassword_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Views/ForgotPassword.vue */ "./resources/js/Views/ForgotPassword.vue"));
+};
+
 var Register = function Register() {
   return __webpack_require__.e(/*! import() */ "resources_js_Views_Register_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Views/Register.vue */ "./resources/js/Views/Register.vue"));
 };
@@ -25111,15 +25120,25 @@ var Welcome = function Welcome() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   path: '/',
   component: Welcome,
-  name: 'welcome'
+  name: 'welcome',
+  meta: {
+    authRequired: true
+  }
 }, {
   path: '/home',
   component: Home,
-  name: 'home'
+  name: 'home',
+  meta: {
+    authRequired: true
+  }
 }, {
   path: '/login',
   component: Login,
   name: 'login'
+}, {
+  path: '/forgot-password',
+  component: ForgotPassword,
+  name: 'forgot-password'
 }, {
   path: '/register',
   component: Register,
@@ -25131,6 +25150,9 @@ var Welcome = function Welcome() {
     name: 'profile'
   },
   name: 'settings',
+  meta: {
+    authRequired: true
+  },
   children: [{
     path: 'profile',
     component: Profile,
@@ -48801,7 +48823,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Views_Settings_vue":1,"resources_js_Views_Profile_vue":1,"resources_js_Views_Password_vue":1,"resources_js_Views_Login_vue":1,"resources_js_Views_Register_vue":1,"resources_js_Views_Home_vue":1,"resources_js_Views_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Views_Settings_vue":1,"resources_js_Views_Profile_vue":1,"resources_js_Views_Password_vue":1,"resources_js_Views_Login_vue":1,"resources_js_Views_ForgotPassword_vue":1,"resources_js_Views_Register_vue":1,"resources_js_Views_Home_vue":1,"resources_js_Views_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
