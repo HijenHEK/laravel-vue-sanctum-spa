@@ -4,6 +4,7 @@ const Password = () => import('../Views/Password.vue');
 const Login = () => import('../Views/Login.vue');
 const ForgotPassword = () => import('../Views/ForgotPassword.vue');
 const ResetPassword = () => import('../Views/ResetPassword.vue');
+const VerifyEmail = () => import('../Views/VerifyEmail.vue');
 const Register = () => import('../Views/Register.vue');
 const Home = () => import('../Views/Home.vue');
 const Welcome = () => import('../Views/Welcome.vue')
@@ -45,6 +46,18 @@ export default [{
         path: '/register',
         component: Register,
         name: 'register'
+    },
+    {
+        path: '/verify-email',
+        props: route => ({
+            id: route.query.id,
+            hash: route.query.hash
+        }),
+        component: VerifyEmail,
+        name: 'verify-email',
+        meta: {
+            authRequired: true
+        },
     },
     {
         path: '/settings',
