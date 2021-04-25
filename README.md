@@ -2,7 +2,8 @@
 
 Laravel and vue spa using tailwind (laravel/ui looks) for styling and sanctum for authentification
 
-![image](https://drive.google.com/uc?export=view&id=18dL18Tk6UilQPQAcHuMsSOqJOESpd6YJ)
+![image](https://drive.google.com/uc?export=view&id=1E-hlDaiSC248fMzmtivjQJprTY_qJVUA)
+
 
 ## Features
 
@@ -43,3 +44,10 @@ Highly inspired by [laravel-vue-spa by cretueusebiu](https://github.com/cretueus
 ##
 
 > Other features are under development coming soon :fire:
+
+
+# UI preview
+
+![image](https://drive.google.com/uc?export=view&id=1mTeWNVOaqEl2437lHtgiNcb6dfTj6KZ6)
+![image](https://drive.google.com/uc?export=view&id=177_rm40cjacxza19Ue68dVQUizeKQxJy)
+![image](https://drive.google.com/uc?export=view&id=1D4Hr3X97GuFmsd6mh3nzahx6VhciXI3a)
