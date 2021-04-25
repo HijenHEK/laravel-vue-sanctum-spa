@@ -2,7 +2,7 @@
   <div :class="classes" role="alert">
                             <!-- <strong class="font-bold">Holy smokes!</strong> -->
                             <span class="block sm:inline w-full text-center">{{content}}</span>
-                            <span @click="emit('close')" class="">
+                            <span @click="$emit('close')" class="">
                                     <XIcon class="h-4 w-4 font-bold"></XIcon>
                             </span>
     </div>
@@ -11,7 +11,11 @@
 
 
 <script>
+import {XIcon} from '@heroicons/vue/outline'
 export default {
+    components : {
+        XIcon
+    },
     props : {
         type : {
             type : String,
@@ -31,10 +35,10 @@ export default {
         classes () {
             switch (this.type) {
                 case "success":
-                    return  this.class + "bg-red-100 border border-red-400 text-red-600 "
+                    return  this.class + " bg-red-100 border border-red-400 text-red-600 "
                     break;
                 case "danger":
-                    return this.class + "bg-red-100 border border-red-400 text-red-600 "
+                    return this.class + " bg-red-100 border border-red-400 text-red-600 "
                     break;
             
                 default:

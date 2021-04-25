@@ -8,9 +8,9 @@
 
                 <div class="p-4 bg-white">
 
-                    <alert :type="success" v-if="success" :content="success" @close="success=null" />
+                    <alert type="success" v-if="success" :content="success" @close="success=null" />
 
-                    <alert :type="danger" v-if="error" :content="error" @close="error=null" />
+                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
 
                     <form @submit.prevent="reset" class="md:w-10/12 md:p-4 w-full mx-auto">
 

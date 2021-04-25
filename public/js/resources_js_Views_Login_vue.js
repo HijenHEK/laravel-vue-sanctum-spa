@@ -7517,7 +7517,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    XIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__.XIcon
+  },
   props: {
     type: {
       type: String,
@@ -7537,11 +7542,11 @@ __webpack_require__.r(__webpack_exports__);
     classes: function classes() {
       switch (this.type) {
         case "success":
-          return this["class"] + "bg-red-100 border border-red-400 text-red-600 ";
+          return this["class"] + " bg-red-100 border border-red-400 text-red-600 ";
           break;
 
         case "danger":
-          return this["class"] + "bg-red-100 border border-red-400 text-red-600 ";
+          return this["class"] + " bg-red-100 border border-red-400 text-red-600 ";
           break;
 
         default:
@@ -7741,7 +7746,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.emit('close');
+      return _ctx.$emit('close');
     }),
     "class": ""
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_XIcon, {

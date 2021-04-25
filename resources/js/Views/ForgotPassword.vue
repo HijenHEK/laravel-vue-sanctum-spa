@@ -8,8 +8,9 @@
 
                 <div class="p-4 bg-white">
 
-                    <alert :type="success" v-if="success" :content="success" @close="success=null" />
-                    <alert :type="danger" v-if="error" :content="error" @close="error=null" />
+                    <alert type="success" v-if="success" :content="success" @close="success=null" />
+                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    
                     <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
                         {{error}}
                     </div> -->

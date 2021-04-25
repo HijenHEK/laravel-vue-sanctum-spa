@@ -7484,7 +7484,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    XIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__.XIcon
+  },
   props: {
     type: {
       type: String,
@@ -7504,11 +7509,11 @@ __webpack_require__.r(__webpack_exports__);
     classes: function classes() {
       switch (this.type) {
         case "success":
-          return this["class"] + "bg-red-100 border border-red-400 text-red-600 ";
+          return this["class"] + " bg-red-100 border border-red-400 text-red-600 ";
           break;
 
         case "danger":
-          return this["class"] + "bg-red-100 border border-red-400 text-red-600 ";
+          return this["class"] + " bg-red-100 border border-red-400 text-red-600 ";
           break;
 
         default:
@@ -7589,23 +7594,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [$data.success ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_alert, {
     key: 0,
-    type: $data.success,
+    type: "success",
     content: $data.success,
     onClose: _cache[1] || (_cache[1] = function ($event) {
       return $data.success = null;
     })
   }, null, 8
   /* PROPS */
-  , ["type", "content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_alert, {
+  , ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_alert, {
     key: 1,
-    type: _ctx.danger,
+    type: "danger",
     content: $data.error,
     onClose: _cache[2] || (_cache[2] = function ($event) {
       return $data.error = null;
     })
   }, null, 8
   /* PROPS */
-  , ["type", "content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"error\" class=\"md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center\">\n                        {{error}}\n                    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+  , ["content"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"error\" class=\"md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center\">\n                        {{error}}\n                    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
     "class": "md:w-10/12 md:p-4 w-full mx-auto",
     onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.send && $options.send.apply($options, arguments);
@@ -7664,7 +7669,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.emit('close');
+      return _ctx.$emit('close');
     }),
     "class": ""
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_XIcon, {
