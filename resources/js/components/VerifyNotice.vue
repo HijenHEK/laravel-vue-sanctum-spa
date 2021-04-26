@@ -29,14 +29,11 @@ export default {
     },
     methods : {
         resend(){
-            axios.post('/api/verify-resend' , { 'id' : this.id})
-                .then((res) =>{
-                    this.sent = true
-                })
-                .catch((err) =>{
-                    this.error = err.response.data.message ;
-                })
-            
+            this.$store.dispatch('verifyResend' , {'id' : this.id}).then((res) => {
+                this.sent = true
+            }).catch((err) =>{
+                this.error = "internal error please try again later" ;
+            })
         }
     }
 }

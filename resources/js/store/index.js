@@ -13,10 +13,12 @@ export default createStore({
             return state.user;
         },
         verified(state) {
-            return state.user.email_verified_at
+            if (state.user) return state.user.email_verified_at
+            return null
         },
         id(state) {
-            return state.user.id
+            if (state.user) return state.user.id
+            return null
         }
     },
     mutations: {
@@ -92,7 +94,21 @@ export default createStore({
             }).catch((err) => {
                 throw err.response
             })
-        }
+        },
+
+        async verifyResend({dispatch} , payload){
+            let res = await axios.post('/api/verify-resend' , payload)
+            if (res.status != 200) throw res
+            return res
+        },
+        async verifyEmail({dispatch} , payload){
+            let res = await axios.post('/api/verify-email/' + payload.id + '/' + payload.hash)
+            if (res.status != 200) throw res
+            dispatch('getUser')
+                return res
+            
+        },
+
 
     }
 

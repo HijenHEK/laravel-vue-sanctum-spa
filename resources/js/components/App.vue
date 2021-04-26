@@ -3,7 +3,7 @@
         <div>
             <nav-bar v-if="this.$route.name !== 'welcome'"></nav-bar>
         </div>
-        <VerifyNotice :id="id" v-if="(this.$route.name !== 'welcome') && !verified" />
+        <VerifyNotice :id="id" v-if="(this.$route.name !== 'welcome') && id && !verified" />
         <div>
           
           <router-view class="p-6 " v-slot="{ Component }">

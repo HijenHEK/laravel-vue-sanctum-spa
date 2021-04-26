@@ -59,7 +59,7 @@ export default {
     
     methods : {
         verify(){
-            axios.post('/api/verify-email/' + this.id + '/' +this.hash)
+            this.$store.dispatch('verifyEmail' , {'id' : this.id , 'hash' : this.hash})
                 .then((res) =>{
                     this.success = res.data.message ?  res.data.message  +  ' Redirecting ...' : ' Redirecting ...'
                     setTimeout(()=>{
@@ -71,20 +71,22 @@ export default {
                 })
             
         },
+
         resend(){
-            axios.post('/api/verify-resend' , { 'id' : this.id})
-                .then((res) =>{
-                    this.success = 'Success ! Redirecting ...'
-                    console.log(res)
-                    setTimeout(()=>{
+            this.$store.dispatch('verifyResend' , {'id' : this.id}).then((res)=> {
+                
+                this.success = res.data.message + ' Redirecting ...'
+                setTimeout(()=>{
                         this.$router.push({name:'home'})
                     },1000)
-                })
-                .catch((err) =>{
-                    this.error = err.response.data.message ;
-                })
-            
+            }).catch((err) => {
+                this.error = 'internal error ! plzase try again later .';
+                setTimeout(()=>{
+                        this.$router.push({name:'home'})
+                    },1000)
+            })
         }
+
     },
     
 }
