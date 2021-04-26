@@ -11,6 +11,12 @@ export default createStore({
     getters: {
         user(state) {
             return state.user;
+        },
+        verified(state) {
+            return state.user.email_verified_at
+        },
+        id(state) {
+            return state.user.id
         }
     },
     mutations: {

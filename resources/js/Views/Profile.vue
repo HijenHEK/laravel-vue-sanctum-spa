@@ -5,7 +5,7 @@
     </div>
 
     <div class="p-4 bg-white">
-
+                    {{this.$store.getters.verified}}
 
                     <alert type="success" v-if="success" :content="success" @close="success=null" />
 
