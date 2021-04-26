@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
-class VerifyEmailNotification extends verifyEmail
+class VerifyEmailNotification extends verifyEmail implements ShouldQueue
 {
     use Queueable;
+
 
     /**
      * Get the verification URL for the given notifiable.
