@@ -67,7 +67,7 @@ export default {
                     },1000)
                 })
                 .catch((err) =>{
-                    this.error = err.response.data.message ;
+                    this.error = 'internal error ! plzase try again later .';
                 })
             
         },

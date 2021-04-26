@@ -1,11 +1,13 @@
 <template>
-    <div class="border font-semibold  p-4 ">
+    <div class="border font-semibold  p-4  flex items-center justify-between">
         Profile
+        <div class="text-gray-600 text-sm font-medium">
+            {{verified ? `Verified at : ${ moment(verified).format('MMMM Do YYYY, h:mm a')} ` : 'Not verified !'}}
+        </div>
 
     </div>
 
     <div class="p-4 bg-white">
-                    {{this.$store.getters.verified}}
 
                     <alert type="success" v-if="success" :content="success" @close="success=null" />
 
@@ -39,6 +41,7 @@
 <script>
 import { XIcon } from '@heroicons/vue/solid';
 import Alert from '../components/Alert.vue';
+import moment from 'moment'
 export default {
     components : {
         XIcon,
@@ -55,6 +58,9 @@ export default {
     computed : {
         user() {
             return this.$store.getters.user
+        },
+        verified() {
+            return this.$store.getters.verified
         }
     },
     
@@ -68,12 +74,18 @@ export default {
                 this.error = e.data.message
             };
             
+        },
+        moment: function () {
+            return moment();
         }
     },
+    
+
     mounted() {
         this.name = this.user.name
         this.email = this.user.email
-    }
+    },
+ 
     
 }
 </script>
