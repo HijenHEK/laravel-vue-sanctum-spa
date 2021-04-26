@@ -16,8 +16,8 @@
                     </div> -->
 
                         <div class=" my-1 py-2 sm:w-8/12 md:w-10/12 md:p-4 w-full mx-auto flex justify-center items-center mt-3 sm:mt-0">
-                            <button @click="verify" :class="'p-3 rounded-sm text-white' + (!error ? ' bg-blue-500 hover:bg-blue-600' : 'bg-red-300 hover:bg-red-500')  " >
-                                {{ error ? 'Oops ! Resend' :'Click to Verify'}}
+                            <button @click="error ? resend() : verify()" :class="'p-3 rounded-sm text-white' + (!error ? ' bg-blue-500 hover:bg-blue-600' : ' bg-red-400 text-white hover:bg-red-600')  " >
+                                {{ error ? 'Oops ! Resend ?' :'Click to Verify'}}
                             </button>
                         </div>
 
@@ -61,14 +61,27 @@ export default {
         verify(){
             axios.post('/api/verify-email/' + this.id + '/' +this.hash)
                 .then((res) =>{
-                    this.success = 'redirecting ...'
+                    this.success = res.data.message +  ' Redirecting ...'
                     setTimeout(()=>{
-
                         this.$router.push({name:'home'})
                     },1000)
                 })
                 .catch((err) =>{
-                    console.log(err)
+                    this.error = err.response.data.message ;
+                })
+            
+        },
+        resend(){
+            axios.post('/api/verify-resend')
+                .then((res) =>{
+                    this.success = 'Success ! Redirecting ...'
+                    console.log(res)
+                    setTimeout(()=>{
+                        this.$router.push({name:'home'})
+                    },1000)
+                })
+                .catch((err) =>{
+                    this.error = err.response.data.message ;
                 })
             
         }

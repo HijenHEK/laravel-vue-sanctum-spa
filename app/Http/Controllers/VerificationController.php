@@ -22,12 +22,12 @@ class VerificationController extends Controller
 
     public function verify(Request $request)
     {
-        if (!hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
-            throw new AuthorizationException;
-        }
+        if (
+            !hash_equals((string) $request->route('id'), (string) $request->user()->getKey())
+            || !hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))
+        ) {
 
-        if (!hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
-            throw new AuthorizationException;
+            return response()->json(['message' => 'Verification error ! Try again'], 500);
         }
 
         if ($request->user()->hasVerifiedEmail()) {
