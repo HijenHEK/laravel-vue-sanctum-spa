@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createStore } from 'vuex'
+import sharedMutations from 'vuex-shared-mutations';
 
 
 export default createStore({
@@ -110,7 +111,8 @@ export default createStore({
         },
 
 
-    }
+    },
+    plugins: [sharedMutations({ predicate: ['setUser'] })],
 
 
 })
