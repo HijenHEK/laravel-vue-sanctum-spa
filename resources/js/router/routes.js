@@ -20,18 +20,24 @@ export default [{
         component: Home,
         name: 'home',
         meta: {
-            authRequired: true
+            guard: 'auth'
         }
     },
     {
         path: '/login',
         component: Login,
-        name: 'login'
+        name: 'login',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/forgot-password',
         component: ForgotPassword,
-        name: 'forgot-password'
+        name: 'forgot-password',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/reset-password/:token',
@@ -40,12 +46,18 @@ export default [{
             email: route.query.email
         }),
         component: ResetPassword,
-        name: 'reset-password'
+        name: 'reset-password',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/register',
         component: Register,
-        name: 'register'
+        name: 'register',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/verify-email',
@@ -55,9 +67,7 @@ export default [{
         }),
         component: VerifyEmail,
         name: 'verify-email',
-        meta: {
-            authRequired: true
-        },
+
     },
     {
         path: '/settings',
@@ -67,14 +77,14 @@ export default [{
         },
         name: 'settings',
         meta: {
-            authRequired: true
+            guard: 'auth'
         },
         children: [{
                 path: 'profile',
                 component: Profile,
                 name: 'profile',
                 meta: {
-                    authRequired: true
+                    guard: 'auth'
                 },
 
             },
@@ -83,7 +93,7 @@ export default [{
                 component: Password,
                 name: 'password',
                 meta: {
-                    authRequired: true
+                    guard: 'auth'
                 },
 
             },
@@ -92,6 +102,7 @@ export default [{
     },
     {
         path: '/:pathMatch(.*)*',
-        redirect: '/home'
+        redirect: '/home',
+
     }
 ];

@@ -23,12 +23,14 @@ class VerifyEmailNotification extends verifyEmail implements ShouldQueue
      * @param  mixed  $notifiable
      * @return string
      */
-    public function toMail($notifiable)
+    protected function verificationUrl($notifiable)
     {
-        return (new MailMessage)
-            ->subject(Lang::get('Verify Email Address'))
-            ->line(Lang::get('Please click the button below to verify your email address.'))
-            ->action(Lang::get('Verify Email Address'), url(config('app.url') . "/verify-email") . "?id=" . $notifiable->getKey() . "&hash=" . sha1($notifiable->getEmailForVerification()))
-            ->line(Lang::get('If you did not create an account, no further action is required.'));
+        $url = URL::temporarySignedRoute(
+            'verify',
+            Carbon::now()->addMinutes(60),
+            ['user' => $notifiable->id]
+        );
+
+        return str_replace('/api', '', $url);
     }
 }

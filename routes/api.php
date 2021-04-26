@@ -26,14 +26,20 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', RegisterController::class);
     Route::post('/forgot-password', ForgotPasswordController::class);
     Route::post('/reset-password', ResetPasswordController::class);
+
+    // guest verification (temporary auth)
+    Route::post('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verify');
+    Route::post('/verify-resend', [VerificationController::class, 'resend']);
 });
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/verify-email/{id}/{hash}', [VerificationController::class, 'verify']);
-    Route::post('/verify-resend', [VerificationController::class, 'resend']);
     Route::patch('/profile', ProfileController::class);
     Route::patch('/password', PasswordController::class);
     Route::get('/user', UserController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    // in app verification
+    Route::post('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verify');
+    Route::post('/verify-resend', [VerificationController::class, 'resend']);
 });

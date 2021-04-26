@@ -61,7 +61,7 @@ export default {
         verify(){
             axios.post('/api/verify-email/' + this.id + '/' +this.hash)
                 .then((res) =>{
-                    this.success = res.data.message +  ' Redirecting ...'
+                    this.success = res.data.message ?  res.data.message  +  ' Redirecting ...' : ' Redirecting ...'
                     setTimeout(()=>{
                         this.$router.push({name:'home'})
                     },1000)
@@ -72,7 +72,7 @@ export default {
             
         },
         resend(){
-            axios.post('/api/verify-resend')
+            axios.post('/api/verify-resend' , { 'id' : this.id})
                 .then((res) =>{
                     this.success = 'Success ! Redirecting ...'
                     console.log(res)
