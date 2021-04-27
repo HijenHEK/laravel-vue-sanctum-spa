@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
