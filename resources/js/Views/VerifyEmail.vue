@@ -35,7 +35,6 @@
 
 <script>
 import { XIcon } from '@heroicons/vue/solid';
-import axios from 'axios';
 import Alert from '../components/Alert.vue';
 export default {
     components : {

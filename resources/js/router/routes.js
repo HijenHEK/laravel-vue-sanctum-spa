@@ -60,10 +60,10 @@ export default [{
         }
     },
     {
-        path: '/verify-email',
+        path: '/verify-email/:id/:hash',
         props: route => ({
-            id: route.query.id,
-            hash: route.query.hash
+            id: route.params.id,
+            hash: route.params.hash           
         }),
         component: VerifyEmail,
         name: 'verify-email',
