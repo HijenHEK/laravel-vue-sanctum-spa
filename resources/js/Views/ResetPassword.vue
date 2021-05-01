@@ -8,9 +8,9 @@
 
                 <div class="p-4 bg-white">
 
-                    <alert type="success" v-if="success" :content="success" @close="success=null" />
+                    <success  v-if="success" :content="success" @close="success=null" />
 
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <errors  v-if="errors" :content="errors" @close="errors=null" />
 
                     <form @submit.prevent="reset" class="md:w-10/12 md:p-4 w-full mx-auto">
 
@@ -25,7 +25,10 @@
                         
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
-                                <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> Reset </button>
+                                <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                                <button v-else type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> Reset </button>
                             </div>
                         </div>
                     </form>
@@ -43,12 +46,16 @@
 
 <script>
 import {XIcon} from '@heroicons/vue/outline'
-import Alert from '../components/Alert'
+import Errors from '../components/Errors.vue'
 import axios from 'axios'
+import Success from '../components/Success.vue'
+import CircleSvg from '../components/CircleSvg.vue'
 export default {
     components :{
         XIcon ,
-        Alert
+        Errors ,
+        Success,
+        CircleSvg
     },
     props  : {
         token : {
@@ -65,15 +72,20 @@ export default {
 
             password : '' ,
             password_confirmation : '',
-            error : '',
+            errors : null,
             success : '',
+            busy : false ,
+
             
         }
     },
 
     methods : {
-        reset(){
-            axios.post('/api/reset-password' , {
+        async reset(){
+            this.busy = true ;
+            this.errors = null 
+            this.success = ''
+            await axios.post('/api/reset-password' , {
                     'email': this.email, 
                     'token': this.token, 
                     'password': this.password, 
@@ -87,8 +99,9 @@ export default {
                     },1000)
                 })
                 .catch((err) =>{
-                    this.error = err.response.data.message
+                    this.errors = err.response.data
                 })
+                this.busy = false ;
             
         }
     },

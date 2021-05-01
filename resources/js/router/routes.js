@@ -4,6 +4,7 @@ const Password = () => import('../Views/Password.vue');
 const Login = () => import('../Views/Login.vue');
 const ForgotPassword = () => import('../Views/ForgotPassword.vue');
 const ResetPassword = () => import('../Views/ResetPassword.vue');
+const VerifyEmail = () => import('../Views/VerifyEmail.vue');
 const Register = () => import('../Views/Register.vue');
 const Home = () => import('../Views/Home.vue');
 const Welcome = () => import('../Views/Welcome.vue')
@@ -12,27 +13,31 @@ export default [{
         path: '/',
         component: Welcome,
         name: 'welcome',
-        meta: {
-            authRequired: true
-        }
+
     },
     {
         path: '/home',
         component: Home,
         name: 'home',
         meta: {
-            authRequired: true
+            guard: 'auth'
         }
     },
     {
         path: '/login',
         component: Login,
-        name: 'login'
+        name: 'login',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/forgot-password',
         component: ForgotPassword,
-        name: 'forgot-password'
+        name: 'forgot-password',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/reset-password/:token',
@@ -41,12 +46,28 @@ export default [{
             email: route.query.email
         }),
         component: ResetPassword,
-        name: 'reset-password'
+        name: 'reset-password',
+        meta : {
+            guard : 'guest'
+        }
     },
     {
         path: '/register',
         component: Register,
-        name: 'register'
+        name: 'register',
+        meta : {
+            guard : 'guest'
+        }
+    },
+    {
+        path: '/verify-email/:id/:hash',
+        props: route => ({
+            id: route.params.id,
+            hash: route.params.hash           
+        }),
+        component: VerifyEmail,
+        name: 'verify-email',
+
     },
     {
         path: '/settings',
@@ -56,14 +77,14 @@ export default [{
         },
         name: 'settings',
         meta: {
-            authRequired: true
+            guard: 'auth'
         },
         children: [{
                 path: 'profile',
                 component: Profile,
                 name: 'profile',
                 meta: {
-                    authRequired: true
+                    guard: 'auth'
                 },
 
             },
@@ -72,7 +93,7 @@ export default [{
                 component: Password,
                 name: 'password',
                 meta: {
-                    authRequired: true
+                    guard: 'auth'
                 },
 
             },
@@ -81,6 +102,7 @@ export default [{
     },
     {
         path: '/:pathMatch(.*)*',
-        redirect: '/home'
+        redirect: '/home',
+
     }
 ];

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -21,7 +20,7 @@ class AuthController extends Controller
         if (!$this->guard()->attempt($credentials)) {
             return response()->json([
 
-                'message' => 'Unauthorized , The provided credentials are incorrect.'
+                'message' => 'The provided credentials are incorrect.'
             ], 500);
         }
 

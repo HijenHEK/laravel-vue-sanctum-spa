@@ -9,9 +9,12 @@
                 <div class="p-4 bg-white">
                     
 
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
-
+                    <errors  v-if="errors" :content="errors"  @close="errors=null" />
+                    
                     <form @submit.prevent="register" class="md:w-10/12 md:p-4 w-full mx-auto">
+
+                        
+
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
                             <label for="Name" class="w-4/12 "> Name </label>
                             <input type="text" name="name" v-model="name" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm">
@@ -31,7 +34,12 @@
                         
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
-                                <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> Register </button>
+                                <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                                <button v-else type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   Register
+                                </button>
                                 <router-link :to="{name : 'login'}" class="text-sm text-blue-500 hover:underline"> Already a member ? Sing In ! </router-link>
                             </div>
                         </div>
@@ -50,11 +58,13 @@
 
 <script>
 import {XIcon} from '@heroicons/vue/outline'
-import Alert from '../components/Alert.vue';
+import CircleSvg from '../components/CircleSvg.vue';
+import Errors from '../components/Errors.vue';
 export default {
     components :{
         XIcon ,
-        Alert
+        CircleSvg,
+        Errors
     },
     data() {
         return {
@@ -62,12 +72,17 @@ export default {
             email : '' ,
             password : '' ,
             password_confirmation : '',
-            error : ''
+            errors : null,
+            busy : false ,
+                
         }
     },
 
     methods : {
         async register() {
+            this.busy = true ;
+            this.errors = null 
+            this.success = ''
             try {
                 await this.$store.dispatch('register' , {
                     'name' : this.name,
@@ -78,8 +93,9 @@ export default {
                 this.$router.push({name: 'home'})
             } catch (e) {
                 // e.data.errors 
-                this.error = e.data.message
+                this.errors = e.data
             }
+                this.busy = false ;
         }
     }
 }

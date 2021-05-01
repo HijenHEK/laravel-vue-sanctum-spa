@@ -7,9 +7,9 @@
     <div class="p-4 bg-white">
 
 
-                    <alert type="success" v-if="success" :content="success" @close="success=null" />
+                    <Success  v-if="success" :content="success" @close="success=null" />
 
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <Errors v-if="errors" :content="errors" @close="errors=null" />
                     <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
                         {{error}}
                     </div> -->
@@ -26,7 +26,10 @@
                        
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
-                                <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Update</button>
+                                 <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                                <button v-else type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Update</button>
                             </div>
                         </div>
                     </form>
@@ -38,31 +41,44 @@
 
 <script>
 import { XIcon } from '@heroicons/vue/solid';
-import Alert from '../components/Alert.vue';
+import Errors from '../components/Errors.vue';
+import Success from '../components/Success.vue';
+import CircleSvg from '../components/CircleSvg.vue';
 export default {
     components : {
         XIcon,
-        Alert
+       Errors,
+       Success,
+        CircleSvg
     },
     data() {
         return {
+            
             password :  '' , 
             password_confirmation :  '', 
-            error : '',
-            success : ''
+            errors : null,
+            success : '',
+            busy : false ,
+
         }
     },
     
     
     methods : {
         async update(){
+            this.busy = true ;
+            this.errors = null 
+            this.success = ''
             try {
                 await this.$store.dispatch('password' , {'password' : this.password ,'password_confirmation' : this.password_confirmation})
                 this.success = 'password updated successfully !'
+                this.password = ''
+                this.password_confirmation = ''
             }
             catch (e){
-                this.error = e.data.message
+                this.errors = e.data
             };
+            this.busy = false ;
             
         }
     },

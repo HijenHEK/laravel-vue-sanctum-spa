@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createStore } from 'vuex'
+import sharedMutations from 'vuex-shared-mutations';
 
 
 export default createStore({
@@ -11,6 +12,14 @@ export default createStore({
     getters: {
         user(state) {
             return state.user;
+        },
+        verified(state) {
+            if (state.user) return state.user.email_verified_at
+            return null
+        },
+        id(state) {
+            if (state.user) return state.user.id
+            return null
         }
     },
     mutations: {
@@ -86,9 +95,24 @@ export default createStore({
             }).catch((err) => {
                 throw err.response
             })
-        }
+        },
 
-    }
+        async verifyResend({dispatch} , payload){
+            let res = await axios.post('/api/verify-resend' , payload)
+            if (res.status != 200) throw res
+            return res
+        },
+        async verifyEmail({dispatch} , payload){
+            let res = await axios.post('/api/verify-email/' + payload.id + '/' + payload.hash)
+            if (res.status != 200) throw res
+            dispatch('getUser')
+                return res
+            
+        },
+
+
+    },
+    plugins: [sharedMutations({ predicate: ['setUser'] })],
 
 
 })

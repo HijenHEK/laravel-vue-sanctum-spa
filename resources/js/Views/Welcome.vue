@@ -1,18 +1,18 @@
 <template>
 <div class="min-h-screen flex flex-col ">
     <div class="p-4 absolute flex  top-1 right-1 text-gray-500 text-sm font-semibold uppercase tracking-widest">
-      <div v-if="auth">
+      <div v-if="user">
         <router-link class="px-6 " :to="{ name: 'home' }">
           Home
         </router-link>
       </div>
-      <div v-else >
+      <div v-else>
         <router-link class="px-6 " :to="{ name: 'login' }">
           Login
         </router-link>
-        <!-- <router-link class="p-2 mr-4" :to="{ name: 'register' }">
+        <router-link class="p-2 mr-4" :to="{ name: 'register' }">
           Register
-        </router-link> -->
+        </router-link>
       </div>
     </div>
 
@@ -36,6 +36,11 @@ export default {
         return {
             auth : true 
         }
+    },
+    computed : {
+      user() {
+        return this.$store.getters.user ;
+      }
     }
 }
 </script>
