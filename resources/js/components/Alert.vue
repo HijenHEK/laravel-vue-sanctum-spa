@@ -1,9 +1,9 @@
 <template >
-  <div :class="classes" role="alert">
+  <div :class="classes" role="alert shadow">
                             <!-- <strong class="font-bold">Holy smokes!</strong> -->
                             <span class="block sm:inline w-full text-center">{{content}}</span>
                             <span @click="$emit('close')" class="">
-                                    <XIcon class="h-4 w-4 font-bold"></XIcon>
+                                    <XIcon class="h-5 w-5 font-bold cursor-pointer"></XIcon>
                             </span>
     </div>
 </template>
@@ -35,10 +35,10 @@ export default {
         classes () {
             switch (this.type) {
                 case "success":
-                    return  this.class + " bg-green-100 border border-green-400 text-green-600 "
+                    return  this.class + " bg-green-100 border border-green-100 text-green-500 "
                     break;
                 case "danger":
-                    return this.class + " bg-red-100 border border-red-400 text-red-600 "
+                    return this.class + " bg-red-100 border border-red-100 text-red-500 "
                     break;
             
                 default:
