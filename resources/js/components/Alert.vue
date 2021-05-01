@@ -1,7 +1,16 @@
 <template >
   <div :class="classes" role="alert shadow">
                             <!-- <strong class="font-bold">Holy smokes!</strong> -->
-                            <span class="block sm:inline w-full text-center">{{content}}</span>
+                            <span v-if="!content.errors" class="block sm:inline w-full text-center">{{content}}</span>
+                            <div v-else class="block sm:inline w-full text-center">
+                            
+                            <div>{{content.message}}</div>
+                             <ul class="text-sm mt-2">
+                                    <li v-for="e in content.errors" :key="e.index">
+                                        {{e[0]}}
+                                    </li>
+                                </ul>
+                            </div>
                             <span @click="$emit('close')" class="">
                                     <XIcon class="h-5 w-5 font-bold cursor-pointer"></XIcon>
                             </span>
@@ -22,13 +31,13 @@ export default {
             default : 'success'
         },
         content : {
-            type : String,
+            type : Object,
             default : 'hello !'
         }
     } , 
     data() {
         return {
-            class : 'flex items-center border px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto'
+            class : 'flex items-start border px-4 py-3 rounded relative md:w-10/12 md:p-2 w-full mx-auto'
         }
     } ,
     computed : {

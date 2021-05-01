@@ -9,8 +9,8 @@
                 <div class="p-4 bg-white">
                     
 
-                    <alert type="danger" v-if="error" :content="error"  @close="error=null" />
-
+                    <alert type="danger" v-if="errors" :content="errors"  @close="errors=null" />
+                    
                     <form @submit.prevent="register" class="md:w-10/12 md:p-4 w-full mx-auto">
 
                         
@@ -72,9 +72,9 @@ export default {
             email : '' ,
             password : '' ,
             password_confirmation : '',
-            error : '',
+            errors : null,
             busy : false ,
-            allErrors : []    
+                
         }
     },
 
@@ -91,8 +91,7 @@ export default {
                 this.$router.push({name: 'home'})
             } catch (e) {
                 // e.data.errors 
-                this.error = e.data.message
-                this.errors = e.data.errors
+                this.errors = e.data
             }
                 this.busy = false ;
         }

@@ -9,7 +9,7 @@
                 <div class="p-4 bg-white">
                     
 
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <alert type="danger" v-if="errors" :content="errors" @close="errors=null" />
 
                     <form class="md:w-10/12 md:p-4 w-full mx-auto" @submit.prevent="login">
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
@@ -61,7 +61,7 @@ export default {
         return {
             email : '' , 
             password : '' , 
-            error : ''
+            errors : ''
         }
     },
     
@@ -72,7 +72,7 @@ export default {
                 this.$router.push({name: 'home'})
             }
             catch (e){
-                this.error = e.data.message
+                this.errors = e.data
             };
             
         }
