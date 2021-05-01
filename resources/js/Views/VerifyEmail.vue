@@ -8,8 +8,8 @@
 
                 <div class="p-4 bg-white">
 
-                    <alert type="success" v-if="success" :content="success" @close="success=null" />
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <success  v-if="success" :content="success" @close="success=null" />
+                    <errors v-if="errors" :content="errors" @close="errors=null" />
                     
                     <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
                         {{error}}
@@ -35,11 +35,13 @@
 
 <script>
 import { XIcon } from '@heroicons/vue/solid';
-import Alert from '../components/Alert.vue';
+import Errors from '../components/Errors.vue';
+import Success from '../components/Success.vue';
 export default {
     components : {
         XIcon,
-        Alert
+        Errors,
+        Success
     },
     props  : {
         id : {
@@ -51,7 +53,7 @@ export default {
     },
     data() {
         return {
-            error : '' , 
+            errors : '' , 
             success : '',
         }
     },
@@ -66,7 +68,7 @@ export default {
                     },1000)
                 })
                 .catch((err) =>{
-                    this.error = 'internal error ! plzase try again later .';
+                    this.errors = 'internal error ! plzase try again later .';
                 })
             
         },
@@ -79,7 +81,7 @@ export default {
                         this.$router.push({name:'home'})
                     },1000)
             }).catch((err) => {
-                this.error = 'internal error ! plzase try again later .';
+                this.errors = 'internal error ! plzase try again later .';
                 setTimeout(()=>{
                         this.$router.push({name:'home'})
                     },1000)

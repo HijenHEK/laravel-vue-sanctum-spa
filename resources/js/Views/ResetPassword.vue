@@ -8,9 +8,9 @@
 
                 <div class="p-4 bg-white">
 
-                    <alert type="success" v-if="success" :content="success" @close="success=null" />
+                    <success  v-if="success" :content="success" @close="success=null" />
 
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <errors  v-if="errors" :content="errors" @close="errors=null" />
 
                     <form @submit.prevent="reset" class="md:w-10/12 md:p-4 w-full mx-auto">
 
@@ -43,12 +43,14 @@
 
 <script>
 import {XIcon} from '@heroicons/vue/outline'
-import Alert from '../components/Alert'
+import Errors from '../components/Errors.vue'
 import axios from 'axios'
+import Success from '../components/Success.vue'
 export default {
     components :{
         XIcon ,
-        Alert
+        Errors ,
+        Success
     },
     props  : {
         token : {
@@ -65,7 +67,7 @@ export default {
 
             password : '' ,
             password_confirmation : '',
-            error : '',
+            errors : '',
             success : '',
             
         }
@@ -87,7 +89,7 @@ export default {
                     },1000)
                 })
                 .catch((err) =>{
-                    this.error = err.response.data.message
+                    this.errors = err.response.data
                 })
             
         }

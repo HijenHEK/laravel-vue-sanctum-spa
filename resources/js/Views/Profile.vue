@@ -9,9 +9,9 @@
 
     <div class="p-4 bg-white">
 
-                    <alert type="success" v-if="success" :content="success" @close="success=null" />
+                    <Success  v-if="success" :content="success" @close="success=null" />
 
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <Errors  v-if="errors" :content="errors" @close="errors=null" />
                     <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
                         {{error}}
                     </div> -->
@@ -40,18 +40,20 @@
 
 <script>
 import { XIcon } from '@heroicons/vue/solid';
-import Alert from '../components/Alert.vue';
+import Errors from '../components/Errors.vue';
+import Success from '../components/Success.vue';
 import moment from 'moment'
 export default {
     components : {
         XIcon,
-        Alert
+       Errors,
+       Success
     },
     data() {
         return {
             email :  '' , 
             name :  '', 
-            error : '',
+            errors : '',
             success : ''
         }
     },
@@ -71,7 +73,7 @@ export default {
                 this.success = 'profile updated successfully !'
             }
             catch (e){
-                this.error = e.data.message
+                this.errors = e.data
             };
             
         },

@@ -9,7 +9,7 @@
                 <div class="p-4 bg-white">
                     
 
-                    <alert type="danger" v-if="errors" :content="errors"  @close="errors=null" />
+                    <errors  v-if="errors" :content="errors"  @close="errors=null" />
                     
                     <form @submit.prevent="register" class="md:w-10/12 md:p-4 w-full mx-auto">
 
@@ -58,13 +58,13 @@
 
 <script>
 import {XIcon} from '@heroicons/vue/outline'
-import Alert from '../components/Alert.vue';
 import CircleSvg from '../components/CircleSvg.vue';
+import Errors from '../components/Errors.vue';
 export default {
     components :{
         XIcon ,
-        Alert ,
-        CircleSvg
+        CircleSvg,
+        Errors
     },
     data() {
         return {

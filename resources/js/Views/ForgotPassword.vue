@@ -8,8 +8,8 @@
 
                 <div class="p-4 bg-white">
 
-                    <alert type="success" v-if="success" :content="success" @close="success=null" />
-                    <alert type="danger" v-if="error" :content="error" @close="error=null" />
+                    <Success  v-if="success" :content="success" @close="success=null" />
+                    <Errors  v-if="errors" :content="errors" @close="errors=null" />
                     
                     <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
                         {{error}}
@@ -42,11 +42,14 @@
 <script>
 import { XIcon } from '@heroicons/vue/solid';
 import axios from 'axios';
-import Alert from '../components/Alert.vue';
+import Success from '../components/Success.vue'
+import Errors from '../components/Errors.vue';
 export default {
     components : {
+    Success,
         XIcon,
-        Alert
+       Errors,
+       Success
     },
     data() {
         return {
@@ -63,7 +66,7 @@ export default {
                     this.success = res.data.msg
                 })
                 .catch((err) =>{
-                    this.error = err.response.data.message
+                    this.errors = err.response.data
                 })
             
         }
