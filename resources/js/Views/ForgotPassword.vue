@@ -54,13 +54,15 @@ export default {
     data() {
         return {
             email : '' , 
-            error : '' , 
+            errors : null , 
             success : '',
         }
     },
     
     methods : {
         send(){
+            this.errors = null 
+            this.success = ''
             axios.post('/api/forgot-password' , {'email': this.email}) 
                 .then((res) =>{
                     this.success = res.data.msg

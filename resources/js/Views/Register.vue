@@ -81,6 +81,8 @@ export default {
     methods : {
         async register() {
             this.busy = true ;
+            this.errors = null 
+            this.success = ''
             try {
                 await this.$store.dispatch('register' , {
                     'name' : this.name,

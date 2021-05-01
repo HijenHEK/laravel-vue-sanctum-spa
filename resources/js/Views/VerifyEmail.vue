@@ -53,13 +53,15 @@ export default {
     },
     data() {
         return {
-            errors : '' , 
+            errors : null, 
             success : '',
         }
     },
     
     methods : {
         verify(){
+            this.errors = null 
+            this.success = ''
             this.$store.dispatch('verifyEmail' , {'id' : this.id , 'hash' : this.hash})
                 .then((res) =>{
                     this.success = res.data.message ?  res.data.message  +  ' Redirecting ...' : ' Redirecting ...'
@@ -74,6 +76,8 @@ export default {
         },
 
         resend(){
+            this.errors = null 
+            this.success = ''
             this.$store.dispatch('verifyResend' , {'id' : this.id}).then((res)=> {
                 
                 this.success = res.data.message + ' Redirecting ...'

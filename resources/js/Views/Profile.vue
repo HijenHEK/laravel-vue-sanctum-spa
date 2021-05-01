@@ -53,7 +53,7 @@ export default {
         return {
             email :  '' , 
             name :  '', 
-            errors : '',
+            errors : null,
             success : ''
         }
     },
@@ -68,6 +68,8 @@ export default {
     
     methods : {
         async update(){
+            this.errors = null 
+            this.success = ''
             try {
                 await this.$store.dispatch('profile' , {'email' : this.email , 'name' : this.name})
                 this.success = 'profile updated successfully !'

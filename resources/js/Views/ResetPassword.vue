@@ -67,7 +67,7 @@ export default {
 
             password : '' ,
             password_confirmation : '',
-            errors : '',
+            errors : null,
             success : '',
             
         }
@@ -75,6 +75,8 @@ export default {
 
     methods : {
         reset(){
+            this.errors = null 
+            this.success = ''
             axios.post('/api/reset-password' , {
                     'email': this.email, 
                     'token': this.token, 

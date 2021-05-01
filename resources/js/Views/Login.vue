@@ -61,12 +61,13 @@ export default {
         return {
             email : '' , 
             password : '' , 
-            errors : ''
+            errors : null
         }
     },
     
     methods : {
         async login(){
+            this.errors = null
             try {
                 await this.$store.dispatch('login' , {'email' : this.email , 'password' : this.password})
                 this.$router.push({name: 'home'})

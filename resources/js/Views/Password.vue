@@ -50,7 +50,7 @@ export default {
         return {
             password :  '' , 
             password_confirmation :  '', 
-            errors : '',
+            errors : null,
             success : ''
         }
     },
@@ -58,6 +58,8 @@ export default {
     
     methods : {
         async update(){
+            this.errors = null 
+            this.success = ''
             try {
                 await this.$store.dispatch('password' , {'password' : this.password ,'password_confirmation' : this.password_confirmation})
                 this.success = 'password updated successfully !'
