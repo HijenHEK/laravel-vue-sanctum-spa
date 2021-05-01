@@ -16,7 +16,10 @@
                     </div> -->
 
                         <div class=" my-1 py-2 sm:w-8/12 md:w-10/12 md:p-4 w-full mx-auto flex justify-center items-center mt-3 sm:mt-0">
-                            <button @click="error ? resend() : verify()" :class="'p-3 rounded-sm text-white' + (!error ? ' bg-blue-500 hover:bg-blue-600' : ' bg-red-400 text-white hover:bg-red-600')  " >
+                            <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                            <button v-else @click="error ? resend() : verify()" :class="'p-3 rounded-sm text-white' + (!error ? ' bg-blue-500 hover:bg-blue-600' : ' bg-red-400 text-white hover:bg-red-600')  " >
                                 {{ error ? 'Oops ! Resend ?' :'Click to Verify'}}
                             </button>
                         </div>
@@ -37,11 +40,13 @@
 import { XIcon } from '@heroicons/vue/solid';
 import Errors from '../components/Errors.vue';
 import Success from '../components/Success.vue';
+import CircleSvg from '../components/CircleSvg.vue';
 export default {
     components : {
         XIcon,
         Errors,
-        Success
+        Success,
+        CircleSvg
     },
     props  : {
         id : {
@@ -55,14 +60,17 @@ export default {
         return {
             errors : null, 
             success : '',
+            busy : false ,
+
         }
     },
     
     methods : {
-        verify(){
+        async verify(){
+            this.busy = true ;
             this.errors = null 
             this.success = ''
-            this.$store.dispatch('verifyEmail' , {'id' : this.id , 'hash' : this.hash})
+            await this.$store.dispatch('verifyEmail' , {'id' : this.id , 'hash' : this.hash})
                 .then((res) =>{
                     this.success = res.data.message ?  res.data.message  +  ' Redirecting ...' : ' Redirecting ...'
                     setTimeout(()=>{
@@ -72,6 +80,7 @@ export default {
                 .catch((err) =>{
                     this.errors = 'internal error ! plzase try again later .';
                 })
+                this.busy = false ;
             
         },
 

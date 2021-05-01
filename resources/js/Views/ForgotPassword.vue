@@ -23,7 +23,10 @@
                         
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
-                                <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Send an Email</button>
+                                <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                                <button v-else type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Send an Email</button>
                                 <router-link :to="{name : 'login'}" class="text-sm text-blue-500 hover:underline"> go back ? </router-link>
                             </div>
                         </div>
@@ -44,32 +47,39 @@ import { XIcon } from '@heroicons/vue/solid';
 import axios from 'axios';
 import Success from '../components/Success.vue'
 import Errors from '../components/Errors.vue';
+import CircleSvg from '../components/CircleSvg.vue';
+
 export default {
     components : {
-    Success,
+        Success,
         XIcon,
-       Errors,
-       Success
+        Errors,
+        CircleSvg,
+        Success
     },
     data() {
         return {
             email : '' , 
             errors : null , 
             success : '',
+            busy : false,
+
         }
     },
     
     methods : {
-        send(){
+        async send(){
+            this.busy = true ;
             this.errors = null 
             this.success = ''
-            axios.post('/api/forgot-password' , {'email': this.email}) 
+            await axios.post('/api/forgot-password' , {'email': this.email}) 
                 .then((res) =>{
                     this.success = res.data.msg
                 })
                 .catch((err) =>{
                     this.errors = err.response.data
                 })
+            this.busy = false ;
             
         }
     },

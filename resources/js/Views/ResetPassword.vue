@@ -25,7 +25,10 @@
                         
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
-                                <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> Reset </button>
+                                <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                                <button v-else type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> Reset </button>
                             </div>
                         </div>
                     </form>
@@ -46,11 +49,13 @@ import {XIcon} from '@heroicons/vue/outline'
 import Errors from '../components/Errors.vue'
 import axios from 'axios'
 import Success from '../components/Success.vue'
+import CircleSvg from '../components/CircleSvg.vue'
 export default {
     components :{
         XIcon ,
         Errors ,
-        Success
+        Success,
+        CircleSvg
     },
     props  : {
         token : {
@@ -69,15 +74,18 @@ export default {
             password_confirmation : '',
             errors : null,
             success : '',
+            busy : false ,
+
             
         }
     },
 
     methods : {
-        reset(){
+        async reset(){
+            this.busy = true ;
             this.errors = null 
             this.success = ''
-            axios.post('/api/reset-password' , {
+            await axios.post('/api/reset-password' , {
                     'email': this.email, 
                     'token': this.token, 
                     'password': this.password, 
@@ -93,6 +101,7 @@ export default {
                 .catch((err) =>{
                     this.errors = err.response.data
                 })
+                this.busy = false ;
             
         }
     },

@@ -28,7 +28,10 @@
                        
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center  sm:justify-end">
                             <div class="sm:w-8/12 w-full  flex justify-between items-center mt-3 sm:mt-0">
-                                <button type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Update</button>
+                                 <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
+                                   <circle-svg class="w-6 h-6" />
+                                </div>
+                                <button v-else type="submit" class="p-3 rounded-sm text-white bg-blue-500 hover:bg-blue-600">Update</button>
                             </div>
                         </div>
                     </form>
@@ -43,18 +46,22 @@ import { XIcon } from '@heroicons/vue/solid';
 import Errors from '../components/Errors.vue';
 import Success from '../components/Success.vue';
 import moment from 'moment'
+import CircleSvg from '../components/CircleSvg.vue';
 export default {
     components : {
         XIcon,
        Errors,
-       Success
+       Success,
+        CircleSvg
     },
     data() {
         return {
             email :  '' , 
             name :  '', 
             errors : null,
-            success : ''
+            success : '' ,
+            busy : false ,
+
         }
     },
     computed : {
@@ -68,6 +75,7 @@ export default {
     
     methods : {
         async update(){
+            this.busy = true ;
             this.errors = null 
             this.success = ''
             try {
@@ -77,6 +85,7 @@ export default {
             catch (e){
                 this.errors = e.data
             };
+            this.busy = false ;
             
         },
         moment: function () {

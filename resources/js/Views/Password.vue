@@ -51,7 +51,9 @@ export default {
             password :  '' , 
             password_confirmation :  '', 
             errors : null,
-            success : ''
+            success : '',
+            busy : false ,
+
         }
     },
     
