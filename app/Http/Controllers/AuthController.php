@@ -20,7 +20,7 @@ class AuthController extends Controller
         if (!$this->guard()->attempt($credentials)) {
             return response()->json([
 
-                'message' => 'Unauthorized , The provided credentials are incorrect.'
+                'message' => 'The provided credentials are incorrect.'
             ], 500);
         }
 
