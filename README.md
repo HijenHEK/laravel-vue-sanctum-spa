@@ -18,11 +18,14 @@ Laravel and vue spa using tailwind (laravel/ui looks) for styling and sanctum fo
 
 -   `git clone git@github.com:HijenHEK/laravel-vue-sanctum-spa.git --branch v1.0.0 my-spa`  set verion and app name 
 -   `cd my-spa`
--   Edit `.env` and set your database connection details
+-   Edit `.env` and set your database connection details and **your APP_URL** 
 -   `php artisan key:generate`
 -   `php artisan migrate`
 -   `npm install`
 -   `npm run dev`
+
+## Notes
+- make sure your domain is included in the statefull allowed domains (app/config/sanctum.php) to avoid [Unauthorised domains issue #3](/../../issues/3).
 
 ## Usage
 
