@@ -56,7 +56,7 @@ export default {
         if(this.$store.getters.user) {
             let self = this ;   
             window.addEventListener('click', function(e){
-                if (! self.$refs.dropMenu.contains(e.target) ){
+                if ( self.$refs.dropMenu && !self.$refs.dropMenu.contains(e.target) ){
                     self.drop = false
                 } 
             })
