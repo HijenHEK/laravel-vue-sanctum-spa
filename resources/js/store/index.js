@@ -79,7 +79,7 @@ export default createStore({
             await axios.get('/api/user').then((res) => {
                 commit('setUser', res.data);
             }).catch((err) => {
-                
+                throw err.response
             })
         },
         async profile({commit},payload) {
