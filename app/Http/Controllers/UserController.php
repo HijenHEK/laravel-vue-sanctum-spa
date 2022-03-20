@@ -10,8 +10,8 @@ class UserController extends Controller
 
     public function __invoke(Request $request)
     {
-        if(auth()->check()){
-            return response()->json(auth()->user());
+        if(auth("sanctum")->check()){
+            return response()->json(auth("sanctum")->user());
         }
     }
 }

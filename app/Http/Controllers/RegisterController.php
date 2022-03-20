@@ -24,10 +24,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
         if ($user) {
             event(new Registered($user));
-            return $user;
+            $token = $user->createToken('access_token')->plainTextToken;
+            return response()->json(["token" => $token , "type" => "Bearer"]);
         }
     }
 }
