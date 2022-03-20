@@ -21,9 +21,9 @@ class AuthController extends Controller
             return response()->json([
 
                 'message' => 'The provided credentials are incorrect.'
-            ], 500);
+            ], 422);
         }
-
+        $this->guard()->attempt($credentials);
         $token = $this->guard()->user()->createToken('auth-token')->plainTextToken;
         return response()->json([
             'access_token' => $token,

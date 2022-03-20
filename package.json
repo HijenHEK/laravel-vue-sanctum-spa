@@ -23,6 +23,7 @@
     "dependencies": {
         "@heroicons/vue": "^1.0.6",
         "moment": "^2.29.1",
+        "vform": "^2.1.2",
         "vue-router": "^4.0.14",
         "vuex": "^4.0.2",
         "vuex-shared-mutations": "^1.0.2"

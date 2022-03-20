@@ -15,6 +15,7 @@
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
                             <label for="Email" class="w-4/12 "> Email </label>
                             <input type="email" v-model="email" name="email" class="border border-gray-300 bg-white sm:w-8/12 w-full p-2 mt-3 sm:mt-0 focus:outline-none rounded-sm">
+                            
                         </div>
                         <div class=" w-full my-1 py-2 sm:flex  sm:items-center sm:justify-between">
                             <label for="Password" class="w-4/12 "> Password </label>
