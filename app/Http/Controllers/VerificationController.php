@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
     //
-    use VerifiesEmails;
 
     /**
      * Mark the authenticated user's email address as verified.
