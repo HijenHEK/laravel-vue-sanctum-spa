@@ -24,6 +24,9 @@ Laravel and vue spa using tailwind (laravel/ui looks) for styling and sanctum fo
 -   `npm install`
 -   `npm run dev`
 
+### mailer
+-   set up mailer details
+-   put **QUEUE_CONNECTION=database** 
 ## Notes
 - make sure your domain is included in the statefull allowed domains (app/config/sanctum.php) to avoid [Unauthorised domains issue #3](/../../issues/3).
 
@@ -41,7 +44,7 @@ npm run watch
 ```bash
 npm run production
 ```
-
+- turn off debug mode **.env**
 ##
 
 Highly inspired by [laravel-vue-spa by cretueusebiu](https://github.com/cretueusebiu/laravel-vue-spa) where it uses bootstrap 4 fontawesome and JWT for authentification

@@ -11,16 +11,16 @@
                     <success  v-if="success" :content="success" @close="success=null" />
                     <errors v-if="errors" :content="errors" @close="errors=null" />
                     
-                    <!-- <div v-if="error" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
-                        {{error}}
+                    <!-- <div v-if="errors" class="md:w-10/12 md:p-2 w-full mx-auto text-sm text-red-500 text-white text-center">
+                        {{errors}}
                     </div> -->
 
                         <div class=" my-1 py-2 sm:w-8/12 md:w-10/12 md:p-4 w-full mx-auto flex justify-center items-center mt-3 sm:mt-0">
                             <div v-if="busy"  class="flex justify-center items-center p-2 px-6 rounded-sm text-white bg-blue-500 hover:bg-blue-600"> 
                                    <circle-svg class="w-6 h-6" />
                                 </div>
-                            <button v-else @click="error ? resend() : verify()" :class="'p-3 rounded-sm text-white' + (!error ? ' bg-blue-500 hover:bg-blue-600' : ' bg-red-400 text-white hover:bg-red-600')  " >
-                                {{ error ? 'Oops ! Resend ?' :'Click to Verify'}}
+                            <button v-else @click="errors ? resend() : verify()" :class="'p-3 rounded-sm text-white' + (!errors ? ' bg-blue-500 hover:bg-blue-600' : ' bg-red-400 text-white hover:bg-red-600')  " >
+                                {{ errors ? 'Oops ! Resend ?' :'Click to Verify'}}
                             </button>
                         </div>
 
