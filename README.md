@@ -16,7 +16,7 @@ Laravel and vue spa using tailwind (laravel/ui looks) for styling and sanctum fo
 
 ## Installation
 
--   `git clone git@github.com:HijenHEK/laravel-vue-sanctum-spa.git --branch v1.0.0 my-spa`  set verion and app name 
+-   `git clone git@github.com:HijenHEK/laravel-vue-sanctum-spa.git --branch v1.0.1 my-spa`  set verion and app name 
 -   `cd my-spa`
 -   Edit `.env` and set your database connection details and **your APP_URL** 
 -   `php artisan key:generate`
